@@ -11,5 +11,6 @@ public class Example1 {
         byte bt = 2;
         float fl = 3.1F;
         System.out.println(integer + "\n" +  str + "\n" + b + "\n" + ch);
+        //some comment
     }
 }
