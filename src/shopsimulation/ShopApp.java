@@ -42,7 +42,6 @@ public class ShopApp {
             customerCustom.getWishList().add(shop.findProduct(input));
         }
 
-
         shop.showBill(customerCustom.getWishList());
         shop.sell(customerCustom.getWishList(), customerCustom);
 
