@@ -1,6 +1,7 @@
 package shopsimulation;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Shop {
     private String shopTitle;
@@ -25,7 +26,7 @@ public class Shop {
         Product chocolate = new Product("chocolate", 25, 0);
         Product oil = new Product("oil", 65.3, 25);
         products = Arrays.asList(bread, vodka, sausage, cola, salt,
-                                mayonnaise, matches, rice, chocolate, oil);
+                mayonnaise, matches, rice, chocolate, oil);
     }
 
     public Product findProduct(String title) {
@@ -37,11 +38,20 @@ public class Shop {
 
     public void showBill(List<Product> productsToSell) {
         double totalPrice = 0;
-        productsToSell.forEach(product -> product.setPrice(calculatePriceWithDiscount(product)));
+        List<Product> prepareToBill = prepareFinalPrice(productsToSell);
         System.out.println("\n\nYour products list : ");
-        totalPrice = productsToSell.stream().mapToDouble(Product::getPrice).sum();
+        totalPrice = prepareToBill.stream().mapToDouble(Product::getPrice).sum();
         productsToSell.forEach(System.out::println);
         System.out.println("Total price is : " + totalPrice);
+    }
+
+    private List<Product> prepareFinalPrice(List<Product> productsToSell) {
+        return  products.stream()
+                .distinct()
+                .filter(productsToSell::contains)
+                .map(product ->
+                        new Product(product.getTitle(), calculatePriceWithDiscount(product), product.getDiscount()))
+                .collect(Collectors.toList());
     }
 
     public void showAllProducts() {
@@ -51,23 +61,24 @@ public class Shop {
     public double calculatePriceWithDiscount(Product product) {
         return product.getPrice() - (product.getPrice() * product.getDiscount() / 100);
     }
+
     public void sell(List<Product> wishList, Person person) {
         double totalPrice = 0;
         if (person.getMoney() > 0) {
-            if (products.containsAll(wishList)) {
-                wishList.forEach(product -> product.setPrice(calculatePriceWithDiscount(product)));
-                totalPrice = wishList.stream().mapToDouble(Product::getPrice).sum();
-                if (person.getMoney() > totalPrice) {
-                    System.out.println("This is your products, have a nice day " + person.getName());
-                    person.setMoney(person.getMoney() - totalPrice);
-                    soldProducts.addAll(wishList);
-                    System.out.println("Your rest is : " + person.getMoney());
-                } else {
-                    System.out.println("Go fuck yourself drunk idiot");
-                }
+            List<Product> toSell = prepareFinalPrice(wishList);
+            totalPrice = toSell.stream().mapToDouble(Product::getPrice).sum();
+            if (person.getMoney() > totalPrice) {
+                System.out.println("This is your products, have a nice day " + person.getName());
+                person.setMoney(person.getMoney() - totalPrice);
+                soldProducts.addAll(toSell);
+                System.out.println("Your rest is : " + person.getMoney());
+            } else {
+                System.out.println("Go fuck yourself drunk idiot");
             }
         }
     }
+
+
     public String getShopTitle() {
         return shopTitle;
     }
@@ -91,14 +102,6 @@ public class Shop {
     public void setSoldProducts(List<Product> soldProducts) {
         this.soldProducts = soldProducts;
     }
-    /* public double calculateTotalForProduct(int indexOfProduct) {
-        if (products.get(indexOfProduct).getDiscount() > 0) {
-            return products.get(indexOfProduct).getPrice() -
-                    (products.get(indexOfProduct).getPrice() *
-                            products.get(indexOfProduct).getDiscount() / 100);
-        }
-        return products.get(indexOfProduct).getPrice();
-    }*/
 
     @Override
     public String toString() {
