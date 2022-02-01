@@ -36,9 +36,10 @@ public class Shop {
     }
 
     public void showBill(List<Product> productsToSell) {
+        double totalPrice = 0;
         productsToSell.forEach(product -> product.setPrice(calculatePriceWithDiscount(product)));
         System.out.println("\n\nYour products list : ");
-        double totalPrice = products.stream().mapToDouble(Product::getPrice).sum();
+        totalPrice = productsToSell.stream().mapToDouble(Product::getPrice).sum();
         productsToSell.forEach(System.out::println);
         System.out.println("Total price is : " + totalPrice);
     }
@@ -51,10 +52,11 @@ public class Shop {
         return product.getPrice() - (product.getPrice() * product.getDiscount() / 100);
     }
     public void sell(List<Product> wishList, Person person) {
+        double totalPrice = 0;
         if (person.getMoney() > 0) {
             if (products.containsAll(wishList)) {
-                products.forEach(product -> product.setPrice(calculatePriceWithDiscount(product)));
-                double totalPrice = products.stream().mapToDouble(Product::getPrice).sum();
+                wishList.forEach(product -> product.setPrice(calculatePriceWithDiscount(product)));
+                totalPrice = wishList.stream().mapToDouble(Product::getPrice).sum();
                 if (person.getMoney() > totalPrice) {
                     System.out.println("This is your products, have a nice day " + person.getName());
                     person.setMoney(person.getMoney() - totalPrice);

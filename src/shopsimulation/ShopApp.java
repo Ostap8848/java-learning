@@ -35,13 +35,18 @@ public class ShopApp {
         customerRich.getWishList().add(shop.findProduct("cola"));*/
         System.out.println("Enter product title : ");
         while (sc.hasNext()) {
-            String s = sc.next();
-            customerCustom.getWishList().add(shop.findProduct(s));
+            String input = sc.next();
+            if (input.equals("exit")) {
+                break;
+            }
+            customerCustom.getWishList().add(shop.findProduct(input));
         }
 
 
         shop.showBill(customerCustom.getWishList());
         shop.sell(customerCustom.getWishList(), customerCustom);
+
+        shop.getSoldProducts().forEach(System.out::println);
 
         /*shop.sell(customer.getWishList(), customer);
         shop.sell(customerRich.getWishList(), customerRich);*/
