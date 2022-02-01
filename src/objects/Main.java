@@ -29,5 +29,7 @@ public class Main {
         System.out.println("Third tree is ready");
         System.out.println(tree2);
 
+        tree1.setSpecies(tree2.getSpecies());
+
     }
 }
