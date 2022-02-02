@@ -8,7 +8,7 @@ public class Person {
     private int age;
     private double money;
     private boolean isDrunk;
-    private List<Product> wishList;
+    private List<Product> wishList =  new ArrayList<>();
 
     public Person() {}
 
@@ -17,7 +17,6 @@ public class Person {
         this.age = age;
         this.money = money;
         this.isDrunk = isDrunk;
-        this.wishList = new ArrayList<>();
     }
     public String getName() {
         return name;

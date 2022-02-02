@@ -45,5 +45,28 @@ public class Product {
                 ", discount=" + discount +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product)) return false;
+
+        Product product = (Product) o;
+
+        if (Double.compare(product.getPrice(), getPrice()) != 0) return false;
+        if (getDiscount() != product.getDiscount()) return false;
+        return getTitle() != null ? getTitle().equals(product.getTitle()) : product.getTitle() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = getTitle() != null ? getTitle().hashCode() : 0;
+        temp = Double.doubleToLongBits(getPrice());
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + getDiscount();
+        return result;
+    }
 }
 
