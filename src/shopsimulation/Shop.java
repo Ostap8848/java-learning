@@ -41,7 +41,7 @@ public class Shop {
         List<Product> prepareToBill = prepareFinalPrice(productsToSell);
         System.out.println("\n\nYour products list : ");
         totalPrice = prepareToBill.stream().mapToDouble(Product::getPrice).sum();
-        productsToSell.forEach(System.out::println);
+        prepareToBill.forEach(System.out::println);
         System.out.println("Total price is : " + totalPrice);
     }
 
