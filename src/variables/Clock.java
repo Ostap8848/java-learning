@@ -5,9 +5,9 @@ public class Clock {
         public static void main(String[] args) {
             Scanner scanner = new Scanner(System.in);
             int a = scanner.nextInt();
-            int hours = (a % (24 * 60 * 60)) / 3600;
-            int minutes = (a % (60 * 60)) / 60;
-            int seconds = a % 60;
+            int hours = a / 3600;
+            int minutes = (a - (hours * 60)) / 60;
+            int seconds = (a - (hours * 60))- (minutes * 60);
             int hours1 = hours / 10;
             int hours2 = hours % 10;
             int minutes1 = minutes / 10;
