@@ -41,10 +41,11 @@ public class Product {
     public String toString() {
         return "Product{" +
                 "title='" + title + '\'' +
-                ", price=" + price +
+                ", price=" + String.format("%.2f", price) +
                 ", discount=" + discount +
                 '}';
     }
+
 
     @Override
     public boolean equals(Object o) {
