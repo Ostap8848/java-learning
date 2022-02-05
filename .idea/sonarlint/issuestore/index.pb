@@ -17,3 +17,7 @@ N
 src/shopsimulation/Person.java,8\a\8ab723314a9195a0117c4f5322e37fc98cf738ea
 O
 src/shopsimulation/ShopApp.java,5\2\520320f3c79331a66117a7184f589ddadc386b80
+H
+src/variables/Clock.java,d\a\da91267786c4b554a37a9c932ddd3969f3331155
+K
+src/variables/LeapYear.java,3\f\3fe636aa97f608c5ec9614ba64caeb2dd44d2201

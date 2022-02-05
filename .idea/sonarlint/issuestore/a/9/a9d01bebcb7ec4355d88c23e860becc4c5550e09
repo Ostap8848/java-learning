@@ -1,11 +1,8 @@
 
-U	java:S106@"9Replace this use of System.out or System.err by a logger.(şèÕ¡8¤÷Ï°ë/
-Z	java:S106+"9Replace this use of System.out or System.err by a logger.(ã…Ëüüÿÿÿÿ8¤÷Ï°ë/
-Z	java:S106;"9Replace this use of System.out or System.err by a logger.(­°Áøÿÿÿÿ8¤÷Ï°ë/
-K
-java:S10667"/Merge this if statement with the enclosing one.(±›§`8¤÷Ï°ë/
-Z	java:S106*"9Replace this use of System.out or System.err by a logger.(Ø·Ãéúÿÿÿÿ8åÑ¯ë/
-U	java:S106/"9Replace this use of System.out or System.err by a logger.(úÚÄ 8¤÷Ï°ë/
-Z	java:S106("9Replace this use of System.out or System.err by a logger.(«¥Ìæúÿÿÿÿ8³ŠÈ°ë/
-]	java:S125\"<This block of commented-out lines of code should be removed.(£ÃØ‚øÿÿÿÿ8¤÷Ï°ë/
-U	java:S106>"9Replace this use of System.out or System.err by a logger.(†—ºã8ƒ¨Ü°ë/
+U	java:S106J"9Replace this use of System.out or System.err by a logger.(†—ºã8³ÙµËë/
+U	java:S106L"9Replace this use of System.out or System.err by a logger.(şèÕ¡8³ÙµËë/
+U	java:S106:"9Replace this use of System.out or System.err by a logger.(úÚÄ 8³ÙµËë/
+Z	java:S106*"9Replace this use of System.out or System.err by a logger.(«¥Ìæúÿÿÿÿ8³ÙµËë/
+Z	java:S106-"9Replace this use of System.out or System.err by a logger.(ã…Ëüüÿÿÿÿ8³ÙµËë/
+U	java:S106,"9Replace this use of System.out or System.err by a logger.(íŞâä8³ÙµËë/
+Z	java:S106G"9Replace this use of System.out or System.err by a logger.(­°Áøÿÿÿÿ8³ÙµËë/
